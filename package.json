@@ -1,0 +1,15 @@
+{
+  "name": "zfbzd",
+  "version": "1.0.0-beta.1",
+  "description": "根据时间段获取支付宝账单详细信息",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": ["alipay", "bill"],
+  "author": "fish",
+  "license": "MIT",
+  "dependencies": {
+    "zfbdl": "^1.0.0"
+  }
+}
