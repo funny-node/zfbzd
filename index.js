@@ -1,6 +1,6 @@
 const { loginByScanQR, loginByCookies, loginByPwd } = require('zfbdl')
 const { TimeoutError } = require('puppeteer/Errors')
-const { formateDate } = require('./util/helper')
+const { formateDate, reorder } = require('./util/helper')
 const setIntervalDate = require('./lib/setIntervalDate')
 const getDetailInPage = require('./lib/getDetailInPage')
 
@@ -19,6 +19,7 @@ function getBills(options = {}) {
     puppeteerOptions = {},
     turnPageDelay = 8000, // 默认翻页之间停顿 8s
     clickDatePickerDelay = 800, // 默认时间选择器操作之间停顿 0.8s
+    sorting,
   } = options
 
   startDate = formateDate(startDate)
@@ -79,7 +80,7 @@ function getBills(options = {}) {
       await page.waitFor(turnPageDelay)
     }
 
-    resolve(cost_data)
+    resolve(reorder(cost_data, sorting))
   })
 }
 

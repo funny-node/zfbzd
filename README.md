@@ -44,9 +44,15 @@ const getBills = require('zfbzd')
   * `minAmount` `{Number}` 选填，设置账单价格区间起始值，默认值 `Number.NEGATIVE_INFINITY`
   * `maxAmount` `{Number}` 选填，设置账单价格区间结束值，默认值 `Number.POSITIVE_INFINITY`
   * `billExcludes` `{Array}` 选填，过滤账单关键字
+  * `sorting` `{String}` 选填，设置返回账单排序规则
+    * `'desc'` 默认值，倒序返回
+    * `'asc'` 正序返回
 * return: `<Promise<Array<Object>>>`
   * `date` `{String}` 该条账单日期，格式 `yyyy-mm-dd` 
   * `time` `{String}` 该条账单时间，格式 `hh:mm`
+  * `year` `{Number}` 年
+  * `month` `{Number}` 月
+  * `day` `{Number}` 日
   * `amoumt` `{Number}` 该条账单具体账目
   * `outHTML` `{String}` 该条账单 HTML 字符串
 
