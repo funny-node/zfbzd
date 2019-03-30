@@ -31,7 +31,7 @@ const getBills = require('zfbzd')
   * `startDate` `{String}` 必填，账单区间开始时间，格式为 `yyyy.mm.dd` 
   * `endDate` `{String}` 必填，账单区间结束时间，格式为 `yyyy.mm.dd` 
   * `puppeteerOptions` `{Object}` 选填，该值会被传递给 [zfbdl](https://github.com/funny-node/zfbdl#api)，详见其文档
-  * `loginMethdd` `{String}` 选填，模拟登录方式
+  * `loginMethod` `{String}` 选填，模拟登录方式
     * `'scan'` 默认值，扫码登录
     * `'cookies'` cookies 登录，需要配置 `cookierc.js` 文件，详见 [这里](https://github.com/funny-node/zfbdl#loginbycookiesoptions)
     * `'pwd'` 账号密码登录
