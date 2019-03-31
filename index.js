@@ -51,17 +51,20 @@ function getBills(options = {}) {
     // 设置时间删选区间
     await setIntervalDate(page, startDate, endDate, clickDatePickerDelay)
 
+    await page.waitFor(turnPageDelay)
+    
     // 账单数据
     let cost_data = []
 
     while (true) {
+      // 分析页面数据
+      let ret = await page.evaluate(getDetailInPage, options)
+      cost_data.push(...ret)
+
       // 已经到了最后一页
       if (!await page.$('#J_home-record-container > div.amount-bottom > div > div.fn-clear.action-other.action-other-show > div.page.fn-right > div > a.page-next.page-trigger')) {
         break
       }
-
-      let ret = await page.evaluate(getDetailInPage, options)
-      cost_data.push(...ret)
       
       await Promise.all([
         page.click('#J_home-record-container > div.amount-bottom > div > div.fn-clear.action-other.action-other-show > div.page.fn-right > div > a.page-next.page-trigger'),
@@ -81,6 +84,9 @@ function getBills(options = {}) {
     }
 
     resolve(reorder(cost_data, sorting))
+
+    // 这样才能关闭 node 进程
+    await browser.close() 
   })
 }
 
