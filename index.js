@@ -26,17 +26,20 @@ function getBills(options = {}) {
   endDate = formateDate(endDate)
 
   return new Promise(async resolve => {
-    let page 
+    let page, browser, loginRetData
 
     // 模拟登录
     if (loginMethod === 'scan') {
-      page = await loginByScanQR(puppeteerOptions)
+      loginRetData = await loginByScanQR(puppeteerOptions)
     } else if (loginMethod === 'cookies') {
-      page = await loginByCookies(puppeteerOptions)
+      loginRetData = await loginByCookies(puppeteerOptions)
     } else if (loginMethod === 'pwd') {
-      page = await loginByPwd(username, password, puppeteerOptions)
+      loginRetData = await loginByPwd(username, password, puppeteerOptions)
     }
-
+    
+    page = loginRetData.page 
+    browser = loginRetData.browser
+    
     await page.goto('https://consumeprod.alipay.com/record/standard.htm')
 
     // 如果操作频繁，可能需要扫码验证
