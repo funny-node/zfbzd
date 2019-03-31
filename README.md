@@ -53,6 +53,7 @@ const getBills = require('zfbzd')
   * `year` `{Number}` 年
   * `month` `{Number}` 月
   * `day` `{Number}` 日
+  * `timestamp` `{Number}` 该条消费记录时间戳
   * `amoumt` `{Number}` 该条账单具体账目
   * `outHTML` `{String}` 该条账单 HTML 字符串
 
