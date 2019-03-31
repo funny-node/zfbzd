@@ -4,7 +4,7 @@
  * @return {String}
  */
 function formateDate(dateStr) {
-  let [year, month, day] = dateStr.split('.')
+  let [year, month, day] = dateStr.split('-')
   return [year, String(month).padStart(2, '0'), String(day).padStart(2, '0')].join('.')
 }
 

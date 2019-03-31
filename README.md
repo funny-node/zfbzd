@@ -17,8 +17,8 @@ const getBills = require('zfbzd')
 
 ;(async function() {
   let bills = await getBills({
-    startDate: '2018.11.1',
-    endDate: '2019.1.3',
+    startDate: '2018-11-01',
+    endDate: '2019-01-03',
   })
 })()
 ```
@@ -28,8 +28,8 @@ const getBills = require('zfbzd')
 必填项只有 `startDate` 和 `endDate`，用来指定账单时间区间，默认返回指定时间区间内全部记录
 
 * `options` `{Object}`
-  * `startDate` `{String}` 必填，账单区间开始时间，格式为 `yyyy.mm.dd` 
-  * `endDate` `{String}` 必填，账单区间结束时间，格式为 `yyyy.mm.dd` 
+  * `startDate` `{String}` 必填，账单区间开始时间，格式为 `yyyy-mm-dd` 
+  * `endDate` `{String}` 必填，账单区间结束时间，格式为 `yyyy-mm-dd`
   * `puppeteerOptions` `{Object}` 选填，该值会被传递给 [zfbdl](https://github.com/funny-node/zfbdl#api)，详见其文档
   * `loginMethod` `{String}` 选填，模拟登录方式
     * `'scan'` 默认值，扫码登录
