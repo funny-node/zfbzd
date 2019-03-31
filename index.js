@@ -53,8 +53,6 @@ function getBills(options = {}) {
 
     // 设置时间删选区间
     await setIntervalDate(page, startDate, endDate, clickDatePickerDelay)
-
-    await page.waitFor(turnPageDelay)
     
     // 账单数据
     let cost_data = []
@@ -68,6 +66,9 @@ function getBills(options = {}) {
       if (!await page.$('#J_home-record-container > div.amount-bottom > div > div.fn-clear.action-other.action-other-show > div.page.fn-right > div > a.page-next.page-trigger')) {
         break
       }
+
+      // 每次翻页前等待
+      await page.waitFor(turnPageDelay)
       
       await Promise.all([
         page.click('#J_home-record-container > div.amount-bottom > div > div.fn-clear.action-other.action-other-show > div.page.fn-right > div > a.page-next.page-trigger'),
@@ -82,8 +83,6 @@ function getBills(options = {}) {
           console.log('长时间没有扫描验证码，被当作机器啦！')
         }
       }
-      
-      await page.waitFor(turnPageDelay)
     }
 
     resolve(reorder(cost_data, sorting))
